@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <div class = "reg">
+      <form name="regForm" method="post" action="SuccessPage.html" onsubmit="return validate()">
+      <h1> Registration Form </h1>
+      <label for="firstname"><b>First Name*</b></label>
+      <br/>
+      <input type="text" placeholder="Enter First Name" name="firstname">
+      <br/>
+      <label for="lastname"><b>Last Name*</b></label>
+      <br/>
+      <input type="text" placeholder="Enter Last Name" name="lastname">
+      <br/>
+      <label for="emailId"><b>Email ID*</b></label>
+      <br/>
+      <input type="text" placeholder="Enter Email Id" name="emailId">
+      <br/>
+      <label for="password"><b>Password*</b></label>
+      <br/>
+      <input type="password" placeholder="Enter password" name="password">
+      <br/>
+      <label for="phonenumber"><b>Mobile Number*</b></label>
+      <br/>
+      <input type="text" placeholder="Enter mobile number" name="phonenumber">
+      <br/>
+      <label for="dob"><b>Date of Birth*</b></label>
+      <br/>
+      <input type = "text" placeholder="DD-MM-YYYY" name = "dob">
+      <br/>
+      <button type="submit" class="regbtn" name = "submit" value = "Submit">Register</button>
+      <br>
+      <button type="reset" class="cancel">Cancel</button>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  function validate() {
+    var pattern =/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+    var phoneno = /^\d{10}$/;
+    if(document.regForm.firstname.value=="") {
+      alert("You did not enter your first name");
+      document.regForm.firstname.focus();
+      return false;
+    } 
+    else if(document.regForm.lastname.value=="") {
+      alert("You did not enter your last name");
+      document.regForm.lastname.focus();
+      return false;
+    } 
+    else if(document.regForm.emailId.value.includes('@')==false) {
+      alert("You did not enter a valid email ID");
+      document.regForm.emailId.focus();
+      return false;
+    } 
+    else if(document.regForm.password.value=="") {
+      alert("You did not enter your password");
+      document.regForm.password.focus();
+      return false;
+    } 
+    else if(phoneno.test(document.regForm.phonenumber.value) == false) {
+      alert("You did not enter a valid mobile number");
+      document.regForm.phonenumber.focus();
+      return false;
+    } 
+    else if(pattern.test(document.regForm.dob.value) == false) {
+      alert("You did not enter a valid date of birth");
+      document.regForm.dob.focus();
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+</script>
